@@ -1,6 +1,8 @@
 # AdaptiveParabolicSurfFEM
 This repository contains the Code written for a Masters Thesis on Adaptivity for surface FEM for Parabolic surface PDEs based on a posteriori error analysis.
-In Particular we solve the PDE: -\Delta_Gamma u + d_t u = f for some close surface \Gamma and some initial condition u_0.
+In Particular we solve the PDE:
+                                -\Delta_Gamma u + d_t u = f
+for some closes surface \Gamma and some initial condition u_0.
 
 The Code is written in MATLAB and is based on Bartels "Texts in Applied Mathematics 64, Numerical Approximation of Partial Differential Equations"
 
