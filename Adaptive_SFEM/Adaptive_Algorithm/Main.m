@@ -59,7 +59,7 @@ while t < T_end
             end
             logical_array = zeros(1,size(eta_space_sq,1));
             logical_array(pos_mark((end-j):end)) = 1;
-            marked = logical_array;
+            marked = logical(logical_array);
         end
         
         %% Refine by RGB or NVB
@@ -120,15 +120,15 @@ while t < T_end
             if marking_criterion == 1          
                 marked = ( eta_space < theta_coarse * max(eta_space) );
             elseif marking_criterion == 2    
-                [sorted,pos_mark] =sort(eta_space_sq);
-                j = 1; sum_eta = 0;
+                [sorted,pos_mark] =sort(eta_space);
+                k = 1; sum_eta = 0;
                 while sum_eta < theta_coarse*eta_space_global
-                    sum_eta = sum_eta+sorted(j);
-                    j = j+1;
+                    sum_eta = sum_eta+sorted(k);
+                    k = k+1;
                 end
-                logical_array = zeros(1,size(eta_space_sq,1));
-                logical_array(pos_mark((end-j):end)) = 1;
-                marked = logical_array;
+                logical_array = zeros(1,size(eta_space,1));
+                logical_array(pos_mark((end-k):end)) = 1;
+                marked = logical(logical_array);
             end
             Nodes_before_coarsen = Nodes;
 
