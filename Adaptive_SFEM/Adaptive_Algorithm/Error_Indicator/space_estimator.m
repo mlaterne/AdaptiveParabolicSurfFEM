@@ -112,24 +112,5 @@ for j = 1:nS
     eta_S_sq(j) = jump^2*vol_SC_1^2;
     % Aufteilen der Kantenanteile auf T_1 und T_2 damit wir ein elementwise error haben
     eta_S_sq_elementwise(T) = eta_S_sq_elementwise(T)+eta_S_sq(j);
-        
-    %Plot triangles with normals
-%     CoordsABCD = [T_1_nodes; T_2_nodes(3,:)];
-%     trisurf([1 2 3; 2 1 4],CoordsABCD(:,1), CoordsABCD(:,2),CoordsABCD(:,3)) %'FaceColor',['b'])
-%     m_AB = T_1_nodes(1,:)+0.5*AB1;
-%     m_BC = T_1_nodes(2,:)+0.5*BC1;
-%     m_CA = T_1_nodes(3,:)+0.5*CA1;
-%     m_AD = T_2_nodes(2,:)+0.5*AD2;
-%     m_BA = T_2_nodes(1,:)+0.5*BA2;
-%     m_DB = T_2_nodes(3,:)+0.5*DB2;
-%     midpoints = [m_AB; m_BC; m_CA; m_BA; m_AD; m_DB];
-%     normals = 0.1.*[n_1_SC;n_1_SA;n_1_SB;n_2_SD;n_2_SB;n_2_SA];
-%     mid_tri = [1/3*(T_1_nodes(1,:)+T_1_nodes(2,:)+T_1_nodes(3,:)) ;1/3*(T_2_nodes(1,:)+T_2_nodes(2,:)+T_2_nodes(3,:))];
-%     mid_norm = -[n_T_1 ; n_T_2];
-%     hold on;
-%     quiver3(midpoints(1:3,1),midpoints(1:3,2), midpoints(1:3,3), normals(1:3,1), normals(1:3,2), normals(1:3,3),'b')
-%     quiver3(midpoints(4:6,1),midpoints(4:6,2), midpoints(4:6,3), normals(4:6,1), normals(4:6,2), normals(4:6,3),'r')
-%     quiver3(mid_tri(1:2,1),mid_tri(1:2,2), mid_tri(1:2,3), mid_norm(1:2,1), mid_norm(1:2,2), mid_norm(1:2,3),'k')
-%     hold off;
 end
 eta_space = eta_T_sq+eta_S_sq_elementwise+eta_3_2_sq+eta_4_2_sq; 

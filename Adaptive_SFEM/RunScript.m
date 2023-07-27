@@ -1,6 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Initialize Problem
-% This script contains the initialization of the numerical Experiments
+% This script contains the initialization of a numerical Experiment
 %
 % T_0 = Start_time
 % T_end = Final time
@@ -13,7 +13,7 @@
 % Dirichlet_Edges_0 = Initial Dirichlet Edges (in all upcoming experiment = \emptyset)
 % Type of Refinement: [1=RGB 2=NVB] 
 % Type of Coarsen: [No Coarsening=0 RGB=1 NVB=2 Naiv=3]
-% Marking Criterion: {1 = Bulk, 2 = Dörfler]
+% Marking Criterion: [1 = Bulk, 2 = Dörfler]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Set All Parameters:
@@ -56,11 +56,11 @@ OUTPUT = Main(TOL, Nodes_0, Elements_0, Dirichlet_Edges_0, T_0, T_end, theta_ref
 %%%%%%%%%%%%%%
 
 %Plot the Surface at the final timestep, colored according to u_h ^j
-Plot(cell2mat(OUTPUT(end,4)),cell2mat(OUTPUT(end,2)),cell2mat(OUTPUT(end,1)))
+surfacePlotter(cell2mat(OUTPUT(end,4)),cell2mat(OUTPUT(end,2)),cell2mat(OUTPUT(end,1)))
 
 
 
-function hh = Plot(func, Elements, Nodes)
+function hh = surfacePlotter(func, Elements, Nodes)
 %Plot Surface and Color faces according to func 
 C_Tri = func; 
 hh = trisurf(Elements,Nodes(:,1),Nodes(:,2),Nodes(:,3));
@@ -71,8 +71,9 @@ set(hh,'FaceColor','flat',...
 'CDataMapping','scaled');
 axis equal;
 xlabel('x') 
-ylabel('y') 
+ylabel('y')
 zlabel('z')
+colorbar()
 end
 
 

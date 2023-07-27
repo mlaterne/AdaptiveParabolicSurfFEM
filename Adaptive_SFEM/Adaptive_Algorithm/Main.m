@@ -95,7 +95,7 @@ while t < T_end
         if j == 1 %Overwrite the initial mesh with the one refined in the first step
             OUTPUT(1,:) = {Nodes,Elements,Dirichlet_Edges,u_old,u_old,T_0,0, 0,f_h,[],[]};
         end
-        %% Step 3.1
+        %% Step 3.A
         tau = 2*tau;
         if t+tau > T_end
             tau = T_end-t;
@@ -166,7 +166,7 @@ while t < T_end
          end
         eta_space_global = inf; %Reset Error quantaties to get back in the while loops
     else
-        %% Step 3.2
+        %% Step 3.B
         t = t-tau; %Set the time back to u_old to Resolve u_new with half timestepsize to get smaller eta_space error.
         tau = tau/2; %New (halfed) timestepsize
         eta_space_global = inf; %Reset Error quantaties to get back in the while loops

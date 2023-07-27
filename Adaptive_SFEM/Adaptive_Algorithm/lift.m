@@ -13,13 +13,12 @@ function nodes = lift(x,d,grad_h)
 % Use a first order approximation of the lifts as described in Thesis
 
 switch nargin
-    case 3
+    case 3 %if only a level set function is given
     h = d;
     nodes = zeros(size(x,1),3);
     TOL = 5*10^-10;
     err = 1;
-    %l = logical(1 == ones(size(x,1),1)); sollte mit logical recht einfach
-    %vektorisierbar sein
+    
     for i = 1:size(x,1)
         a = h(x(i,:)); b = grad_h(x(i,:)); %Inital grad and distance function
         if abs(a) < TOL
@@ -40,7 +39,7 @@ switch nargin
         nodes(i,:) = x_new;
         err = 1;
     end
-    case 2
+    case 2 %Case if the distance function is given
         h0 = 0.1;
         deps=sqrt(eps)*h0;
         TOL = 5*10^-10;
